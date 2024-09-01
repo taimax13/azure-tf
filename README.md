@@ -2,7 +2,10 @@
 example of usage of azure modules
 
 ## Base of the env
-Terraform modules 
+Terraform modules list instances
+```bash
+az vm list-sizes --location "eastus"
+```
 
 ### 1. Basic Web Application
 Technology Used: Python with Flask

@@ -54,7 +54,7 @@ variable "create_resource_group" {
 
 variable "size" {
   type     = string
-  default  = "Standard_A2"
+  default  = "Standard_D2_v3"
   nullable = false
 }
 
