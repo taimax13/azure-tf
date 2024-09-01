@@ -1,7 +1,7 @@
 resource "azurerm_network_security_group" "redis_nsg" {
   name                = "redis-nsg"
   location            = var.location
-  resource_group_name = var.resource_group_name
+  resource_group_name = module.rg.resource_group_name
 
   security_rule {
     name                       = "AllowRedis"
@@ -14,6 +14,7 @@ resource "azurerm_network_security_group" "redis_nsg" {
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
+  depends_on = [module.rg]
 }
 
 resource "azurerm_subnet_network_security_group_association" "redis_nsg_assoc" {

@@ -5,7 +5,6 @@ environment         = "test"  # or "dev", "staging", etc.
 stack               = "StackName"
 location            = "East US"  # or "West Europe", etc.
 location_short      = "eus"  # Short version like "westeu" for "West Europe"
-resource_group_name = "Talex-Candidate"
 
 logs_destinations_ids = [
   #"/subscriptions/your-subscription-id/resourceGroups/your-rg/providers/Microsoft.Storage/storageAccounts/your-storage-account",

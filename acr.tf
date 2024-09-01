@@ -1,7 +1,8 @@
+resource "random_uuid" "rand" {}
 
 module "logs" {
   source  = "claranet/run/azurerm//modules/logs"
-  client_name         = var.client_name
+  client_name         = "${var.client_name}-${random_uuid.rand.result}"
   environment         = var.environment
   stack               = var.stack
   location            = module.azure_region.location

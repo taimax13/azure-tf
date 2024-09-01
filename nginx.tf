@@ -1,7 +1,7 @@
 resource "azurerm_public_ip" "nginx_ip" {
   name                = "nginxPublicIP"
   location            = var.location
-  resource_group_name = var.resource_group_name
+  resource_group_name = module.rg.resource_group_name
   allocation_method   = "Static"
 }
 

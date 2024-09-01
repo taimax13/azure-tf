@@ -23,10 +23,11 @@ variable "location_short" {
   type        = string
 }
 
-variable "resource_group_name" {
-  description = "The name of the resource group to deploy resources"
-  type        = string
+variable "cluster_log_analytics_workspace_name" {
+  description = "Name of the Log Analytics workspace."
+  default     = "my-log-analytics-workspace"
 }
+
 
 variable "logs_destinations_ids" {
   description = "List of IDs for logs destinations, such as storage account and log analytics workspace"
@@ -53,7 +54,7 @@ variable "create_resource_group" {
 
 variable "size" {
   type     = string
-  default  = "Standard_F2"
+  default  = "Standard_A2"
   nullable = false
 }
 

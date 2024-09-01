@@ -2,13 +2,14 @@ module "jenkins_vm" {
   source  = "Azure/virtual-machine/azurerm"
   name = "${var.environment}-${var.client_name}-jenkinsVM"
   subnet_id = azurerm_subnet.main_subnet.id  ###just for demo
-  resource_group_name     = var.resource_group_name
+  resource_group_name     = module.rg.resource_group_name
   size = var.size
   location                = var.location
   os_disk = {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
   }
+  disable_password_authentication = false
   image_os = "linux"
   os_simple = "UbuntuServer"
   admin_username          = "adminuser"
@@ -18,4 +19,5 @@ module "jenkins_vm" {
     Environment = "Production"
     Project     = "MyJenkinsProject"
   }
+  depends_on = [module.rg]
 }

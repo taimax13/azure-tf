@@ -41,10 +41,10 @@ resource "helm_release" "external_dns" {
 #     value = azurerm_subscription.current.subscription_id
 #   }
 ##
-  set {
-    name  = "azure.resourceGroup"
-    value = var.resource_group_name
-  }
+#   set {
+#     name  = "azure.resourceGroup"
+#     value = module.rg.resource_group_name
+#   }
 
 #   set {
 #     name  = "azure.tenantId"
@@ -83,7 +83,8 @@ resource "helm_release" "external_dns" {
 }
 
 resource "azurerm_user_assigned_identity" "workload_identity" {
-  resource_group_name = var.resource_group_name
+  resource_group_name = module.rg.resource_group_name
   location            = var.location
   name                = "workload-identity"
+  depends_on = [module.rg]
 }

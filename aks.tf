@@ -12,15 +12,20 @@ locals {
     }
   }
 }
+
 module "aks" {
   source  = "Azure/aks/azurerm"
-  resource_group_name  = var.resource_group_name
+  resource_group_name  = module.rg.resource_group_name #var.resource_group_name
   cluster_name         = "${var.environment}-${var.client_name}-myAKSCluster"
   identity_type = "SystemAssigned"
   node_pools          = local.nodes
-
+  cluster_log_analytics_workspace_name = "${var.environment}-${var.client_name}-Cluster-${random_uuid.rand.result}"
+  prefix = "${var.environment}-${random_uuid.rand.result}"
+  #role_based_access_control_enabled = true
+  rbac_aad = false
   tags = {
     Environment = "Production"
     Project     = "MyProject"
   }
+  depends_on = [module.rg]
 }
