@@ -27,6 +27,6 @@ spec:
   selector:
     app: hello-world-webapp
   ports:
-    - protocol: HTTP
+    - protocol: TCP
       port: 8080 #external port
       targetPort: 3002
